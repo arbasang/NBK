@@ -1,0 +1,127 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class Animal {
+public:
+    virtual void makeSound() const = 0;
+    virtual ~Animal() {}
+};
+
+class Dog : public Animal {
+public:
+    Dog()
+    {
+        cout << "Dog가 추가되었습니다.\n";
+    }
+    void makeSound() const override {
+        cout << "Dog barks: Woof! Woof!\n";
+    }
+    ~Dog()
+    {
+        cout << "Dog 메모리 해제\n";
+    }
+};
+
+class Cat : public Animal {
+public:
+    Cat()
+    {
+        cout << "Cat가 추가되었습니다.\n";
+    }
+    void makeSound() const override {
+        cout << "Cat barks: Meow! Meow!\n";
+    }
+    ~Cat()
+    {
+        cout << "Cat 메모리 해제\n";
+    }
+};
+
+class Cow : public Animal {
+public:
+    Cow()
+    {
+        cout << "Cow가 추가되었습니다.\n";
+    }
+    void makeSound() const override {
+        cout << "Cow barks: Moo! Moo!\n";
+    }
+    ~Cow()
+    {
+        cout << "Cow 메모리 해제\n";
+    }
+};
+
+class Zoo {
+private:
+    Animal* animals[10];
+    int animalCount = 0;
+
+public:
+    void addAnimal(Animal* animal) {
+        if (animalCount < 10) {
+            animals[animalCount++] = animal;
+        }
+        else {
+            cout << "Zoo is full!\n";
+        }
+    }
+
+    void performActions() {
+        for (int i = 0; i < animalCount; i++) {
+            animals[i]->makeSound();
+        }
+    }
+
+    ~Zoo() {
+        for (int i = 0; i < animalCount; i++) {
+            delete animals[i];
+        }
+    }
+};
+
+// 랜덤 동물 생성 함수
+Animal* createRandomAnimal() {
+    srand((unsigned int)time(NULL));
+    int randNum = rand() % 3;
+
+    if (randNum == 0) {
+        return new Dog();
+    }
+    else if (randNum == 1) {
+        return new Cat();
+    }
+    else {
+        return new Cow();
+    }
+}
+
+int main() {
+    Zoo zoo;
+    int N;
+    Animal* animal;
+    while (true) {
+        cout << "\n1: 랜덤으로 동물 추가  2: 동물원에서 모든 동물의 소리 출력  3: 종료\n";
+        cin >> N;
+
+        switch (N) {
+        case 1:
+            animal = createRandomAnimal();
+            zoo.addAnimal(animal);
+            break;
+        case 2:
+            zoo.performActions();
+            break;
+        case 3:
+            cout << "종료합니다.\n";
+            return 0;
+        default:
+            cout << "다시 입력해주세요.\n";
+        }
+    }
+
+    return 0;
+}
