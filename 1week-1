@@ -1,0 +1,88 @@
+#include <iostream>
+
+using namespace std;
+	
+double score[5];
+double Total = 0;
+
+double sum(int& size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cin >> score[i];
+		Total += score[i];
+	}
+	cout << "총합은 " << Total << "입니다.\n";
+	return Total;
+}
+
+void avg(double Total, int size)
+{
+	double avg;
+	avg = Total / double(size);
+	cout << "평균은 " << avg << "입니다.\n";
+}
+
+void up(double score[], int size)
+{
+	double temp;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (score[i] > score[j])
+			{
+				temp = score[i];
+				score[i] = score[j];
+				score[j] = temp;
+			}
+		}
+	}
+	for (int i = 0; i < size; i++)
+	{
+		cout << score[i];
+	}
+	cout << "\n";
+}
+
+void down(double score[], int size)
+{
+	double temp;
+	double max = score[0];
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (score[i] < score[j])
+			{
+				temp = score[i];
+				score[i] = score[j];
+				score[j] = temp;
+			}
+		}
+	}
+	for (int i = 0; i < size; i++)
+	{
+		cout << score[i];
+	}
+	cout << "\n";
+}
+
+int main()
+{
+	int N;
+	cout << "N개의 입력을 받으실건가요?\n";
+	cin >> N;
+
+	cout << "입력하신 N개만큼 숫자를 입력해주세요.\n";
+	Total = sum(N);
+	avg(Total, N);
+
+	cout << "오름차순으로 정렬\n";
+	up(score, N);
+
+	cout << "내림차순으로 정렬\n";
+	down(score, N);
+
+	return 0;
+};
