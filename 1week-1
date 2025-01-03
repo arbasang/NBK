@@ -12,7 +12,7 @@ double sum(int& size)
 		cin >> score[i];
 		Total += score[i];
 	}
-	cout << "ÃÑÇÕÀº " << Total << "ÀÔ´Ï´Ù.\n";
+	cout << "ì´í•©ì€ " << Total << "ìž…ë‹ˆë‹¤.\n";
 	return Total;
 }
 
@@ -20,7 +20,7 @@ void avg(double Total, int size)
 {
 	double avg;
 	avg = Total / double(size);
-	cout << "Æò±ÕÀº " << avg << "ÀÔ´Ï´Ù.\n";
+	cout << "í‰ê· ì€ " << avg << "ìž…ë‹ˆë‹¤.\n";
 }
 
 void up(double score[], int size)
@@ -71,17 +71,17 @@ void down(double score[], int size)
 int main()
 {
 	int N;
-	cout << "N°³ÀÇ ÀÔ·ÂÀ» ¹ÞÀ¸½Ç°Ç°¡¿ä?\n";
+	cout << "Nê°œì˜ ìž…ë ¥ì„ ë°›ìœ¼ì‹¤ê±´ê°€ìš”?\n";
 	cin >> N;
 
-	cout << "ÀÔ·ÂÇÏ½Å N°³¸¸Å­ ¼ýÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n";
+	cout << "ìž…ë ¥í•˜ì‹  Nê°œë§Œí¼ ìˆ«ìžë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.\n";
 	Total = sum(N);
 	avg(Total, N);
 
-	cout << "¿À¸§Â÷¼øÀ¸·Î Á¤·Ä\n";
+	cout << "ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬\n";
 	up(score, N);
 
-	cout << "³»¸²Â÷¼øÀ¸·Î Á¤·Ä\n";
+	cout << "ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬\n";
 	down(score, N);
 
 	return 0;
