@@ -14,14 +14,14 @@ class Dog : public Animal {
 public:
     Dog()
     {
-        cout << "Dog°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.\n";
+        cout << "Dogê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.\n";
     }
     void makeSound() const override {
         cout << "Dog barks: Woof! Woof!\n";
     }
     ~Dog()
     {
-        cout << "Dog ¸Þ¸ð¸® ÇØÁ¦\n";
+        cout << "Dog ë©”ëª¨ë¦¬ í•´ì œ\n";
     }
 };
 
@@ -29,14 +29,14 @@ class Cat : public Animal {
 public:
     Cat()
     {
-        cout << "Cat°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.\n";
+        cout << "Catê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.\n";
     }
     void makeSound() const override {
         cout << "Cat barks: Meow! Meow!\n";
     }
     ~Cat()
     {
-        cout << "Cat ¸Þ¸ð¸® ÇØÁ¦\n";
+        cout << "Cat ë©”ëª¨ë¦¬ í•´ì œ\n";
     }
 };
 
@@ -44,14 +44,14 @@ class Cow : public Animal {
 public:
     Cow()
     {
-        cout << "Cow°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.\n";
+        cout << "Cowê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.\n";
     }
     void makeSound() const override {
         cout << "Cow barks: Moo! Moo!\n";
     }
     ~Cow()
     {
-        cout << "Cow ¸Þ¸ð¸® ÇØÁ¦\n";
+        cout << "Cow ë©”ëª¨ë¦¬ í•´ì œ\n";
     }
 };
 
@@ -83,7 +83,7 @@ public:
     }
 };
 
-// ·£´ý µ¿¹° »ý¼º ÇÔ¼ö
+// ëžœë¤ ë™ë¬¼ ìƒì„± í•¨ìˆ˜
 Animal* createRandomAnimal() {
     srand((unsigned int)time(NULL));
     int randNum = rand() % 3;
@@ -104,7 +104,7 @@ int main() {
     int N;
     Animal* animal;
     while (true) {
-        cout << "\n1: ·£´ýÀ¸·Î µ¿¹° Ãß°¡  2: µ¿¹°¿ø¿¡¼­ ¸ðµç µ¿¹°ÀÇ ¼Ò¸® Ãâ·Â  3: Á¾·á\n";
+        cout << "\n1: ëžœë¤ìœ¼ë¡œ ë™ë¬¼ ì¶”ê°€  2: ë™ë¬¼ì›ì—ì„œ ëª¨ë“  ë™ë¬¼ì˜ ì†Œë¦¬ ì¶œë ¥  3: ì¢…ë£Œ\n";
         cin >> N;
 
         switch (N) {
@@ -116,10 +116,10 @@ int main() {
             zoo.performActions();
             break;
         case 3:
-            cout << "Á¾·áÇÕ´Ï´Ù.\n";
+            cout << "ì¢…ë£Œí•©ë‹ˆë‹¤.\n";
             return 0;
         default:
-            cout << "´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.\n";
+            cout << "ë‹¤ì‹œ ìž…ë ¥í•´ì£¼ì„¸ìš”.\n";
         }
     }
 
