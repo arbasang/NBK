@@ -1,0 +1,102 @@
+#include <iostream>
+#include <algorithm> 
+
+using namespace std;
+
+template <typename T>
+class SimpleVector {
+private:
+    T* data;             
+    size_t currentSize;  
+    size_t currentCapacity;  
+
+public:
+    SimpleVector(size_t capacity = 10) : currentSize(0), currentCapacity(capacity) {
+        data = new T[currentCapacity];
+    }
+
+    SimpleVector(const SimpleVector& other) : currentSize(other.currentSize), currentCapacity(other.currentCapacity) {
+        data = new T[currentCapacity];
+        for (size_t i = 0; i < currentSize; ++i) {
+            data[i] = other.data[i];
+        }
+    }
+
+    ~SimpleVector() {
+        delete[] data;
+    }
+
+    void push_back(const T& element) {
+        if (currentSize >= currentCapacity) {
+            resize(currentCapacity + 5);
+        }
+        data[currentSize++] = element;
+    }
+
+    void pop_back() {
+        if (currentSize > 0) {
+            --currentSize;
+        }
+    }
+
+    void resize(size_t newCapacity) {
+        if (newCapacity <= currentCapacity) {
+            return;
+        }
+        T* newData = new T[newCapacity];
+        for (size_t i = 0; i < currentSize; ++i) {
+            newData[i] = data[i];
+        }
+        delete[] data;
+        data = newData;
+        currentCapacity = newCapacity;
+    }
+
+    void sortData() {
+        sort(data, data + currentSize);
+    }
+
+    size_t size() const {
+        return currentSize;
+    }
+
+    size_t capacity() const {
+        return currentCapacity;
+    }
+
+    void print() const {
+        for (size_t i = 0; i < currentSize; ++i) {
+            cout << data[i] << " ";
+        }
+        cout << "\n";
+    }
+};
+
+int main() {
+    SimpleVector<int> vec; 
+
+    vec.push_back(1);
+    vec.push_back(3);
+    vec.push_back(2);
+
+    cout << "벡터의 크기: " << vec.size() << "\n용량: " << vec.capacity() << "\n";
+    cout << "Elements: ";
+    vec.print();
+
+    vec.sortData();
+    cout << "정렬 결과 후 벡터 내 요소: ";
+    vec.print();
+
+    vec.resize(15);
+   cout << "벡터 크기 재할당 후 용량: " << vec.capacity() << "\n";
+   cout << "요소 4와 5를 추가 후 벡터 내 요소: ";
+    vec.push_back(4);
+    vec.push_back(5);
+    vec.print();
+
+    SimpleVector<int> vecCopy = vec; 
+    cout << "벡터를 복사한 후 복사된 벡터 내 요소 : ";
+    vecCopy.print();
+
+    return 0;
+}
