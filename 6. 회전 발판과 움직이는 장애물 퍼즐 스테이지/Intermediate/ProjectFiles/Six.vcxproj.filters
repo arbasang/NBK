@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Six.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Six.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\SixEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Six">
+      <UniqueIdentifier>{84CBE13F-7A1B-36BB-9766-BE08B551B4E8}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Six\Six.Build.cs">
+      <Filter>Source\Six</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Six\Six.cpp">
+      <Filter>Source\Six</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Six\Six.h">
+      <Filter>Source\Six</Filter>
+    </ClCompile>
+    <Filter Include="Source\Six\Private">
+      <UniqueIdentifier>{26EC55B0-B729-3E25-B0D7-CB9F8BF9E7F7}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Six\Private\MoveBox.cpp">
+      <Filter>Source\Six\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Six\Private\RandomActorSpawner.cpp">
+      <Filter>Source\Six\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Six\Private\RotateBox.cpp">
+      <Filter>Source\Six\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Six\Private\ULifeCycleComponent.cpp">
+      <Filter>Source\Six\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\Six\Public">
+      <UniqueIdentifier>{CF224B1B-E060-3691-8897-C9A69CEC0492}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Six\Public\MoveBox.h">
+      <Filter>Source\Six\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Six\Public\RandomActorSpawner.h">
+      <Filter>Source\Six\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Six\Public\RotateBox.h">
+      <Filter>Source\Six\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Six\Public\ULifeCycleComponent.h">
+      <Filter>Source\Six\Public</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
