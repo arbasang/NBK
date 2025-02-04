@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\UnrealEngine\\Six\\Source\\Six\\Six.Build.cs",
+		"D:\\UnrealEngine\\Six\\Source\\Six.Target.cs",
+		"D:\\UnrealEngine\\Six\\Source\\SixEditor.Target.cs"
+	],
+	"EngineVersion": "5.5.1"
+}
