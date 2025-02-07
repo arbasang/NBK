@@ -173,7 +173,7 @@ void AMyPawn::Look(const FInputActionValue& value)
 	FVector2D LookInput = value.Get<FVector2D>();
 
 	FRotator CurrentRotation = GetActorRotation();
-	CurrentRotation.Yaw += LookInput.X;
+	CurrentRotation.Yaw += LookInput.X * LookSpeed;
 	SetActorRotation(CurrentRotation);
 	Controller->SetControlRotation(CurrentRotation);
 }
@@ -237,6 +237,7 @@ void AMyPawn::DroneLook(const FInputActionValue& value)
 	CurrentRotation.Yaw += LookInput.X;
 	CurrentRotation.Pitch = FMath::Clamp(CurrentRotation.Pitch - LookInput.Y, -89.0f, 89.0f);
 	SetActorRotation(CurrentRotation);
+	Controller->SetControlRotation(CurrentRotation);
 }
 
 void AMyPawn::DroneWheel(const FInputActionValue& value)

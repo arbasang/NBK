@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -34,7 +32,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Speed");
 	float MoveSpeed; // 속도 변수
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Speed");
-	float LookSpeed = 5.0f;
+	float LookSpeed = .0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Speed");
 	float UpSpeed = 300.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Speed");
