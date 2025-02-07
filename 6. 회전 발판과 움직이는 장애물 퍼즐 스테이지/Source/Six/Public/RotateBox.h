@@ -31,13 +31,7 @@ protected:
 	UStaticMeshComponent* StaticMeshComp;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Platform Settings")
-	float X;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Platform Settings")
-	float Y;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Platform Settings")
-	float Z;
+	FVector Radius = FVector(0.0f, 0.0f, 0.0f); // 회전 반경
 
 public:
 	virtual void Tick(float DeltaTime) override;

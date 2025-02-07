@@ -44,13 +44,13 @@ void AMoveBox::BeginPlay()
 
 void AMoveBox::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
+Super::Tick(DeltaTime);
 
-	FVector Move = PatrolDirection * MoveSpeed * DeltaTime;
+	FVector Move = PatrolDirection * MoveSpeed * DeltaTime; // 방향 벡터 * 이동 속도 * 델타 타임
 
 	AddActorLocalOffset(Move);
 
-	float Distance = FVector::Dist(StartLocation, GetActorLocation());
+	float Distance = FVector::Dist(StartLocation, GetActorLocation()); // 시작지점과 현재 엑터 사이의 거리
 
 	if (Distance >= MaxDistance && !CanTurn)
 	{

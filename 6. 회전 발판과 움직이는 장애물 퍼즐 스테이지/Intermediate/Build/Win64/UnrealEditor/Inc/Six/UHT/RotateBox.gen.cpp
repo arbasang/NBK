@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeRotateBox() {}
 
 // Begin Cross Module References
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
@@ -56,15 +57,7 @@ struct Z_Construct_UClass_ARotateBox_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/RotateBox.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_X_MetaData[] = {
-		{ "Category", "Platform Settings" },
-		{ "ModuleRelativePath", "Public/RotateBox.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Y_MetaData[] = {
-		{ "Category", "Platform Settings" },
-		{ "ModuleRelativePath", "Public/RotateBox.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Z_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Radius_MetaData[] = {
 		{ "Category", "Platform Settings" },
 		{ "ModuleRelativePath", "Public/RotateBox.h" },
 	};
@@ -74,9 +67,7 @@ struct Z_Construct_UClass_ARotateBox_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_RollRotationSpeed;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SceneRoot;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_StaticMeshComp;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_X;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Y;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Z;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_Radius;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -89,18 +80,14 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARotateBox_Stat
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARotateBox_Statics::NewProp_RollRotationSpeed = { "RollRotationSpeed", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotateBox, RollRotationSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RollRotationSpeed_MetaData), NewProp_RollRotationSpeed_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ARotateBox_Statics::NewProp_SceneRoot = { "SceneRoot", nullptr, (EPropertyFlags)0x00200800000a000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotateBox, SceneRoot), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SceneRoot_MetaData), NewProp_SceneRoot_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ARotateBox_Statics::NewProp_StaticMeshComp = { "StaticMeshComp", nullptr, (EPropertyFlags)0x00200800000a000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotateBox, StaticMeshComp), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StaticMeshComp_MetaData), NewProp_StaticMeshComp_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARotateBox_Statics::NewProp_X = { "X", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotateBox, X), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_X_MetaData), NewProp_X_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARotateBox_Statics::NewProp_Y = { "Y", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotateBox, Y), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Y_MetaData), NewProp_Y_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARotateBox_Statics::NewProp_Z = { "Z", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotateBox, Z), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Z_MetaData), NewProp_Z_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ARotateBox_Statics::NewProp_Radius = { "Radius", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotateBox, Radius), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Radius_MetaData), NewProp_Radius_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ARotateBox_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_PitchRotationSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_YawRotationSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_RollRotationSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_SceneRoot,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_StaticMeshComp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_X,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_Y,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_Z,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotateBox_Statics::NewProp_Radius,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ARotateBox_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ARotateBox_Statics::DependentSingletons[])() = {
@@ -143,10 +130,10 @@ ARotateBox::~ARotateBox() {}
 struct Z_CompiledInDeferFile_FID_Six_Source_Six_Public_RotateBox_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ARotateBox, ARotateBox::StaticClass, TEXT("ARotateBox"), &Z_Registration_Info_UClass_ARotateBox, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARotateBox), 1152409403U) },
+		{ Z_Construct_UClass_ARotateBox, ARotateBox::StaticClass, TEXT("ARotateBox"), &Z_Registration_Info_UClass_ARotateBox, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARotateBox), 1133163038U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Six_Source_Six_Public_RotateBox_h_3949546243(TEXT("/Script/Six"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Six_Source_Six_Public_RotateBox_h_597840919(TEXT("/Script/Six"),
 	Z_CompiledInDeferFile_FID_Six_Source_Six_Public_RotateBox_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Six_Source_Six_Public_RotateBox_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

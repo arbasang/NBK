@@ -30,7 +30,7 @@ void ARotateBox::BeginPlay()
 {
 	Super::BeginPlay();
 
-	StaticMeshComp->SetRelativeLocation(FVector(X, Y, Z));
+	StaticMeshComp->SetRelativeLocation(Radius);
 }
 
 void ARotateBox::Tick(float DeltaTime)
