@@ -3,6 +3,7 @@
 UMyGameInstance::UMyGameInstance()
 {
 	TotalScore = 0;
+	CurrentHealth = 0;
 	CurrentLevelIndex = 0;
 }
 

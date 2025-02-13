@@ -3,8 +3,11 @@
 #include "MyGameInstance.h"
 #include "EnhancedInputSubsystems.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Button.h"
 #include "Components/TextBlock.h"
+#include "EnhancedInputComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 AMyPlayerController::AMyPlayerController()
 	:InputMappingContext(nullptr),
@@ -12,10 +15,13 @@ AMyPlayerController::AMyPlayerController()
 	JumpAction(nullptr),
 	LookAction(nullptr),
 	SprintAction(nullptr),
+	PressTabAction(nullptr),
 	HUDWidgetClass(nullptr),
 	HUDWidgetInstance(nullptr),
 	MainMenuWidgetClass(nullptr),
-	MainMenuWidgetInstance(nullptr)
+	MainMenuWidgetInstance(nullptr),
+	TapMenuWidgetClass(nullptr),
+	TapMenuWidgetInstance(nullptr)
 {
 }
 
@@ -36,6 +42,12 @@ void AMyPlayerController::ShowGameHUD()
 	{
 		MainMenuWidgetInstance->RemoveFromParent();
 		MainMenuWidgetInstance = nullptr;
+	}
+
+	if (TapMenuWidgetInstance)
+	{
+		TapMenuWidgetInstance->RemoveFromParent();
+		TapMenuWidgetInstance = nullptr;
 	}
 
 	if (HUDWidgetClass)
@@ -93,6 +105,7 @@ void AMyPlayerController::ShowMainMenu(bool bIsRestart)
 				ButtonText->SetText(FText::FromString(TEXT("Start")));
 			}
 		}
+
 		if (bIsRestart)
 		{
 			UFunction* PlayAnimFunc = MainMenuWidgetInstance->FindFunction(FName("PlayGameOverAnim"));
@@ -114,15 +127,71 @@ void AMyPlayerController::ShowMainMenu(bool bIsRestart)
 	}
 }
 
+void AMyPlayerController::ShowTabMenu(const FInputActionValue& Value)
+{
+	if (HUDWidgetInstance)
+	{
+		HUDWidgetInstance->RemoveFromParent();
+		HUDWidgetInstance = nullptr;
+	}
+
+	if (TapMenuWidgetInstance)
+	{
+		TapMenuWidgetInstance->RemoveFromParent();
+		TapMenuWidgetInstance = nullptr;
+	}
+
+	if (TapMenuWidgetClass)
+	{
+		TapMenuWidgetInstance = CreateWidget<UUserWidget>(this, TapMenuWidgetClass);
+		if (TapMenuWidgetInstance)
+		{
+			TapMenuWidgetInstance->AddToViewport();
+
+			bShowMouseCursor = true;
+			SetInputMode(FInputModeUIOnly());
+			SetPause(true);
+		}
+	}
+}
+
 void AMyPlayerController::StartGame()
 {
 	if (UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(this)))
 	{
 		MyGameInstance->CurrentLevelIndex = 0;
 		MyGameInstance->TotalScore = 0;
+		MyGameInstance->CurrentHealth = 100;
 	}
 
 	UGameplayStatics::OpenLevel(GetWorld(), FName("BasicLevel"));
+	SetPause(false);
+}
+
+void AMyPlayerController::ExitGame()
+{
+	UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, false);
+}
+
+void AMyPlayerController::ContinueGame()
+{
+	if (TapMenuWidgetInstance)
+	{
+		TapMenuWidgetInstance->RemoveFromParent();
+		TapMenuWidgetInstance = nullptr;
+	}
+
+	if (HUDWidgetClass)
+	{
+		HUDWidgetInstance = CreateWidget<UUserWidget>(this, HUDWidgetClass);
+		if (HUDWidgetInstance)
+		{
+			HUDWidgetInstance->AddToViewport();
+
+			bShowMouseCursor = false;
+			SetInputMode(FInputModeGameOnly());
+		}
+	}
 	SetPause(false);
 }
 

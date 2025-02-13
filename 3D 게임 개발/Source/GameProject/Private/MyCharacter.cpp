@@ -1,5 +1,6 @@
 #include "MyCharacter.h"
 #include "MyGameState.h"
+#include "MyGameInstance.h"
 #include "MyPlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "Camera/CameraComponent.h"
@@ -32,7 +33,6 @@ AMyCharacter::AMyCharacter()
 	GetCharacterMovement()->MaxWalkSpeed = NormalSpeed;
 
 	MaxHealth = 100.0f;
-	Health = MaxHealth;
 }
 
 float AMyCharacter::GetHealth() const
@@ -49,13 +49,20 @@ void AMyCharacter::AddHealth(float Amount)
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (UGameInstance* GameInstance = GetGameInstance())
+	{
+		if (UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance))
+		{
+			Health = MyGameInstance->CurrentHealth;
+		}
+	}
+
 	UpdateOverheadHP();
 }
 
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	if (UEnhancedInputComponent* EnhancedInput = Cast<UEnhancedInputComponent>(PlayerInputComponent))
@@ -113,6 +120,16 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 					ETriggerEvent::Completed,
 					this,
 					&AMyCharacter::StopSprint
+				);
+			}
+
+			if (PlayerController->PressTabAction)
+			{
+				EnhancedInput->BindAction(
+					PlayerController->PressTabAction,
+					ETriggerEvent::Triggered,
+					PlayerController,
+					&AMyPlayerController::ShowTabMenu
 				);
 			}
 		}
@@ -207,6 +224,13 @@ void AMyCharacter::UpdateOverheadHP()
 
 	if (UTextBlock* HPText = Cast<UTextBlock>(OverheadWidgetInstance->GetWidgetFromName(TEXT("OverHeadHP"))))
 	{
-		HPText->SetText(FText::FromString(FString::Printf(TEXT("%.0f / %.0f"), Health, MaxHealth)));
+		if (UGameInstance* GameInstance = GetGameInstance())
+		{
+			if (UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance))
+			{
+				HPText->SetText(FText::FromString(FString::Printf(TEXT("%.0f / %.0f"), Health, MaxHealth)));
+				MyGameInstance->CurrentHealth = Health;
+			}
+		}
 	}
 }
